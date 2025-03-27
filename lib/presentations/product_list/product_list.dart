@@ -89,7 +89,9 @@ class _ProductListState extends ConsumerState<ProductList> {
         ),
       ),
       body: RefreshIndicator(
-        onRefresh: () async => ref.invalidate(productProvider),
+        // the refresh indicator will keep showing until the new activity is
+        // fetched.
+        onRefresh: () async => ref.refresh(productProvider.future),
         child: productsAsync.when(
           data:
               (products) => ListView.builder(
