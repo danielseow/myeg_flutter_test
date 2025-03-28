@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:myeg_flutter_test/presentations/product_list/components/category_dropdown.dart';
 import 'package:myeg_flutter_test/presentations/product_list/components/product_list_item.dart';
 import 'package:myeg_flutter_test/providers/product_provider.dart';
+import 'package:myeg_flutter_test/widgets/cart_button.dart';
 
 class ProductList extends ConsumerStatefulWidget {
   const ProductList({super.key});
@@ -27,21 +28,7 @@ class _ProductListState extends ConsumerState<ProductList> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Product List', style: TextStyle(color: Colors.white)),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Badge(
-              label: Text('10'),
-              isLabelVisible: false,
-              offset: const Offset(-5, 5),
-              child: IconButton(
-                icon: const Icon(Icons.shopping_cart),
-                color: Colors.white,
-                onPressed: () => (),
-              ),
-            ),
-          ),
-        ],
+        actions: [CartButton()],
         backgroundColor: Color(0xff002552),
         // Search bar
         bottom: PreferredSize(
