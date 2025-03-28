@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:myeg_flutter_test/app_router.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(ProviderScope(child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -9,12 +11,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MaterialApp.router(
+      theme: ThemeData(
+        colorScheme: ThemeData().colorScheme.copyWith(
+          primary: Color(0xff002552),
         ),
       ),
+      routerConfig: goRouter,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
